@@ -1,15 +1,14 @@
 package hr.kruno.z2.rma_priprema_k_05_2021;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +42,6 @@ public class PregledActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
     }
     private List<StavkaRjecnika> procitaj(){
-        //SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Context c = getApplicationContext();
         SharedPreferences sp = c.getSharedPreferences("rjecnik", Context.MODE_PRIVATE);
         Map<String, String> sve = (Map<String,String>)sp.getAll();
@@ -52,9 +50,10 @@ public class PregledActivity extends AppCompatActivity {
             sr.add(new StavkaRjecnika(el.getKey(), el.getValue()));
         }
         if(sr.size() == 0){
-            Toast.makeText(this,"Rječnik je prazan!\nUnesite stavke kroz izbornik ažuriranja!", Toast.LENGTH_LONG).show();
+            Toast.makeText(c,"Rječnik je prazan!\nUnesite stavke kroz izbornik ažuriranja!", Toast.LENGTH_LONG).show();
+        }else {
+            Collections.sort(sr);
         }
-        Collections.sort(sr);
         return sr;
     }
 }
