@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "RMA-priprema-k-05-2021"

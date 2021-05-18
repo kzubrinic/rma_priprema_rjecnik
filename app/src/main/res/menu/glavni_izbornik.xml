@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item android:id="@+id/azuriranje"
+            android:title="Ažuriranje rječnika" />
+        <item android:id="@+id/pregled"
+            android:title="Pregled" />
+</menu>
